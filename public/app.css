@@ -1,0 +1,26 @@
+body {
+    background: white;
+    color: black;
+    max-width: 600px;
+    margin: auto;
+    font-size: 62.5%;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+p {
+    line-height: 1.7;
+    font-size: 1.2rem;
+}
+
+article:not(:first-of-type) {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid grey;
+}
+
+
+
