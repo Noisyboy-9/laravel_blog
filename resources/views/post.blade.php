@@ -8,6 +8,6 @@
     <title>Post</title>
 </head>
 <body>
-<?= $post->body?>
+{!! $post->body !!}
 </body>
 </html>
