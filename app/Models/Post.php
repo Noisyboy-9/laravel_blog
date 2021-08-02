@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -41,8 +42,12 @@ class Post
      *
      * @throws \Exception
      */
-    public static function find(string $slug): Post
+    public static function findOrFail(string $slug): Post
     {
+        if (!static::all()->contains('slug', $slug)) {
+            throw new ModelNotFoundException();
+        }
+
         return cache()->remember(
             "post.$slug",
             5,
