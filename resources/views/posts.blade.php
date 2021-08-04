@@ -11,6 +11,10 @@
             <div>
                 <p>{{ $post->description }}</p>
             </div>
+
+            <p>
+                <a href="#">{{ $post->category->name }}</a>
+            </p>
         </article>
     @endforeach
 </x-layout>
