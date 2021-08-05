@@ -29,8 +29,8 @@ class PostFactory extends Factory
             'owner_id' => User::factory(),
             'category_id' => Category::factory(),
             'slug' => $this->faker->slug(),
-            'title' => $this->faker->domainWord(),
-            'description' => $this->faker->sentence(),
+            'title' => $this->faker->sentence(5),
+            'description' => $this->faker->sentence(20),
             'published_at' => now(),
             'body' => $this->faker->paragraph(20)
         ];
