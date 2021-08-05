@@ -6,7 +6,7 @@
     <p>{{ $post->body }}</p>
 
     <p>
-        By <a href="/users/{{ $post->owner->id}}">{{ $post->owner->name }}</a> in
+        By <a href="/users/{{ $post->owner->username }}">{{ $post->owner->name }}</a> in
         <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
         category
     </p>

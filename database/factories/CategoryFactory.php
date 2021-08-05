@@ -20,10 +20,11 @@ class CategoryFactory extends Factory
      *
      * @return array
      */
-    #[ArrayShape(['name' => "string", 'slug' => "array|string|string[]"])] public function definition(): array
+    #[ArrayShape(['name' => "string", 'slug' => "string"])] public function definition(): array
     {
-        $name = $this->faker->sentence;
-        $slug = strtolower(str_replace(' ', '-', $name));
-        return ['name' => $name, 'slug' => $slug];
+        return [
+            'name' => $this->faker->unique()->word(),
+            'slug' => $this->faker->unique()->slug()
+        ];
     }
 }

@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/posts', function () {
     return view('posts', [
-        'posts' => Post::all()->sortBy('created_at')
+        'posts' => Post::latest()->get()
     ]);
 });
 
@@ -40,5 +40,6 @@ Route::get('/categories/{category}', function (Category $category) {
 });
 
 Route::get('/users/{user}', function (User $user) {
+    $user->load('posts');
     return view('user', compact('user'));
 });

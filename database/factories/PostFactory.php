@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\DB;
 use function Symfony\Component\Translation\t;
@@ -23,14 +25,13 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->slug(2);
-        $slug = strtolower(str_replace(' ', '-', $title));
-
         return [
-            'owner_id' => 1,
-            'slug' => $slug,
-            'title' => $title,
-            'description' => $this->faker->sentence,
+            'owner_id' => User::factory(),
+            'category_id' => Category::factory(),
+            'slug' => $this->faker->slug(),
+            'title' => $this->faker->domainWord(),
+            'description' => $this->faker->sentence(),
+            'published_at' => now(),
             'body' => $this->faker->paragraph(20)
         ];
     }
