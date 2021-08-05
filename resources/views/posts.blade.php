@@ -13,7 +13,7 @@
             </div>
 
             <p>
-                <a href="/categories/{{ $post->category->name }}">{{ $post->category->name }}</a>
+                Category: <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
             </p>
         </article>
     @endforeach
