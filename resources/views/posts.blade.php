@@ -7,6 +7,5 @@
         @else
             <p class="text-center">No posts. Please comeback later.</p>
         @endif
-
     </main>
 </x-layout>
