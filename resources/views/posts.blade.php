@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">All Posts</x-slot>
-    <x-partials.header/>
+    <x-partials.header :categories="$categories" :currentCategory="$currentCategory ?? null"/>
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
         @if ($posts->count())
             <x-partials.post-grid :posts="$posts"/>

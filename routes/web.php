@@ -21,20 +21,23 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
-    return view('posts', [
-        'posts' => Post::latest()->get()
-    ]);
+    $categories = Category::all();
+    $posts = Post::latest()->get();
+
+    return view('posts', compact('posts', 'categories'));
 });
 
 Route::get('/posts/{post}', function (Post $post) {
     return view('post', [
-        'post' => $post
+        'post' => $post,
     ]);
 });
 
 Route::get('/categories/{category}', function (Category $category) {
     return view('posts', [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
 });
 
