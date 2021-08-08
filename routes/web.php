@@ -16,13 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//posts
+//static pages
 Route::get('/', [PagesController::class, 'welcome']);
+
+//posts
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post}', [PostController::class, 'show']);
-
-//categories
-//Route::get('/categories/{category}', [PostCategoryController::class, 'show']);
 
 //users
 Route::get('/users/{user}', [UserController::class, 'show']);

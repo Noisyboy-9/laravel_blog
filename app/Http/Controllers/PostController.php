@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Foundation\Application;
@@ -13,16 +12,14 @@ class PostController extends Controller
 {
     public function index(): Factory|View|Response|bool|Application
     {
-        return view('posts', [
+        return view('posts.index', [
             'posts' => Post::latest()->filter(request()->only('search', 'category'))->get(),
-            'categories' => Category::all(),
-            'currentCategory' => Category::firstWhere('slug', request('category'))
         ]);
     }
 
     public function show(Post $post): Factory|View|Response|bool|Application
     {
-        return view('post', [
+        return view('posts.show', [
             'post' => $post,
         ]);
     }
