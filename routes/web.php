@@ -21,8 +21,16 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
+    $posts = Post::latest();
+
+    if (request('search')) {
+        $posts->where('title', 'like', "%" . request('search') . "%")
+            ->orWhere('description', 'like', "%" . request('search') . "%")
+            ->orWhere('body', 'like', "%" . request('search') . '%');
+    }
+
+    $posts = $posts->get();
     $categories = Category::all();
-    $posts = Post::latest()->get();
 
     return view('posts', compact('posts', 'categories'));
 });
@@ -34,6 +42,7 @@ Route::get('/posts/{post}', function (Post $post) {
 });
 
 Route::get('/categories/{category}', function (Category $category) {
+
     return view('posts', [
         'posts' => $category->posts,
         'currentCategory' => $category,
