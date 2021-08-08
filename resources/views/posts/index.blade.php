@@ -7,5 +7,7 @@
         @else
             <p class="text-center">No posts. Please comeback later.</p>
         @endif
+
+        {{ $posts->links() }}
     </main>
 </x-layout>

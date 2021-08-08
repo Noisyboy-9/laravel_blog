@@ -15,7 +15,10 @@ class PostController extends Controller
     public function index(): Factory|View|Response|bool|Application
     {
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request()->only(...$this->filters))->get(),
+            'posts' => Post::latest()
+                ->filter(request()->only(...$this->filters))
+                ->simplePaginate(5)
+                ->withQueryString(),
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $category = Category::factory()->create();
+
         Post::factory()
-            ->count(10)
-            ->create();
+            ->count(100)
+            ->create(['category_id' => $category]);
     }
 }
