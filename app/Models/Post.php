@@ -45,6 +45,13 @@ class Post extends Model
                 ->where('slug', $category)
                 ->orWhere('name', $category)
             ));
+
+        $query->when($filters['owner'] ?? false, fn(Builder $query, string $username) => $query
+            ->whereHas('owner', fn(Builder $query) => $query
+                ->where('username', $username)
+                ->orWhere('name', $username)
+            )
+        );
     }
 }
 

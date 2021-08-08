@@ -31,14 +31,7 @@
             </div>
 
             <footer class="flex justify-between items-center mt-8">
-                <a href="/users/{{ $post->owner->username }}">
-                    <div class="flex items-center text-sm">
-                        <img src="/images/lary-avatar.svg" alt="Lary avatar">
-                        <div class="ml-3">
-                            <h5 class="font-bold">{{ $post->owner->name }}</h5>
-                        </div>
-                    </div>
-                </a>
+                <x-post-author :owner="$post->owner"/>
 
                 <div>
                     <a class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"

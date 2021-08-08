@@ -10,10 +10,12 @@ use Illuminate\Contracts\View\View;
 
 class PostController extends Controller
 {
+    private array $filters = ['search', 'category', 'owner'];
+
     public function index(): Factory|View|Response|bool|Application
     {
         return view('posts.index', [
-            'posts' => Post::latest()->filter(request()->only('search', 'category'))->get(),
+            'posts' => Post::latest()->filter(request()->only(...$this->filters))->get(),
         ]);
     }
 
