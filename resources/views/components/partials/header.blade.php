@@ -11,7 +11,7 @@
                 <x-slot name="trigger">
                     <button class="py-2 pl-3 pr-9 text-sm font-semibold w-full lg:w-32 text-left flex lg:inline-flex">
                         @isset($currentCategory)
-                            {{ $currentCategory->name }}
+                            {{ strtoupper($currentCategory->name) }}
                         @endisset
 
                         @empty($currentCategory)
@@ -32,9 +32,9 @@
                 {{-- links --}}
                 <x-partials.dropdown-item href="/posts">All</x-partials.dropdown-item>
                 @foreach($categories as $category)
-                    <x-partials.dropdown-item href="?categories={{ $category->slug }}"
+                    <x-partials.dropdown-item href="?category={{ $category->slug }}"
                                               :active="$currentCategory && $currentCategory->is($category)">
-                        {{ $category->name }}
+                        {{ strtoupper($category->name) }}
                     </x-partials.dropdown-item>
                 @endforeach
             </x-partials.dropdown>
