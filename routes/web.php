@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +22,7 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
 //categories
-Route::get('/categories/{category}', [PostCategoryController::class, 'show']);
+//Route::get('/categories/{category}', [PostCategoryController::class, 'show']);
 
-//users  
+//users
 Route::get('/users/{user}', [UserController::class, 'show']);
