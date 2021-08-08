@@ -24,8 +24,9 @@
     {{-- links --}}
     <x-partials.dropdown-item href="/posts">All</x-partials.dropdown-item>
     @foreach($categories as $category)
-        <x-partials.dropdown-item href="?category={{ $category->slug }}"
-                                  :active="$currentCategory && $currentCategory->is($category)">
+        <x-partials.dropdown-item
+            href="?category={{ $category->slug }}&{{ http_build_query(request()->except('category')) }}"
+            :active="$currentCategory && $currentCategory->is($category)">
             {{ strtoupper($category->name) }}
         </x-partials.dropdown-item>
     @endforeach
