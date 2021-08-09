@@ -6,6 +6,6 @@ class PagesController extends Controller
 {
     public function welcome()
     {
-        return view('welcome');
+        return view('static.welcome');
     }
 }
