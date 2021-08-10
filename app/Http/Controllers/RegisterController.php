@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,17 +16,9 @@ class RegisterController extends Controller
         return view('register.create');
     }
 
-    public function store()
+    public function store(RegisterRequest $request)
     {
-        $attributes = $this->validate(request(), [
-            'name' => 'required|max:255',
-            'username' => 'required|max:255|min:3|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:7'
-        ]);
-
-        User::create($attributes);
-
+        User::create($request->validated());
         return redirect('/posts');
     }
 }
