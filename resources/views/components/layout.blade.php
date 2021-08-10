@@ -22,4 +22,5 @@
     <x-partials.footer/>
 </section>
 
+<x-flash/>
 </body>
