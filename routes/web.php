@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostController;
@@ -16,5 +17,9 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('auth')
 //register
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+
+//login
+Route::get('/login', [LoginController::class, 'create'])->middleware('guest');
+Route::post('login', [LoginController::class, 'store'])->middleware('guest');
 
 Route::post('/logout', [LogoutController::class, 'destroy'])->middleware('auth');

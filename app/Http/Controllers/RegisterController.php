@@ -8,6 +8,8 @@ use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
@@ -17,7 +19,7 @@ class RegisterController extends Controller
         return view('register.create');
     }
 
-    public function store(RegisterRequest $request)
+    public function store(RegisterRequest $request): Redirector|Application|RedirectResponse
     {
         $user = User::create($request->validated());
 
