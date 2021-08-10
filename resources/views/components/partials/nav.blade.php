@@ -5,16 +5,31 @@
         </a>
     </div>
 
-    <div class="mt-8 md:mt-0">
-        <a href="/" class="text-xs font-bold uppercase mr-3">Home Page</a>
+    <div class="mt-8 md:mt-0 flex - items-center">
 
-        <a href="/posts" class="text-xs font-bold uppercase mr-3">Posts</a>
+        @guest()
+            <a href="/login" class="text-xs font-bold uppercase mr-3">Login</a>
 
-        <a href="/login" class="text-xs font-bold uppercase mr-3">Login</a>
+            <a href="/register"
+               class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                Register
+            </a>
+        @endguest
 
-        <a href="/register" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-            Register
-        </a>
+        @auth
+            <a href="/posts" class="text-xs font-bold uppercase mr-5">Posts</a>
+
+
+            <form action="/logout" method="post" class="text-sm font-bold uppercase mr-3">
+                @csrf
+                <button type="submit" class="font-semibold">logout</button>
+            </form>
+
+            <a href="/users/{{ auth()->user()->username }}"
+               class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                {{ auth()->user()->name }}
+            </a>
+        @endauth
     </div>
 </nav>
 

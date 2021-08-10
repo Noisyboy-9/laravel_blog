@@ -8,6 +8,7 @@ use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -18,7 +19,9 @@ class RegisterController extends Controller
 
     public function store(RegisterRequest $request)
     {
-        User::create($request->validated());
+        $user = User::create($request->validated());
+
+        Auth::login($user);
 
         return redirect('/posts')->with('success', 'Your account has been created.');
     }
