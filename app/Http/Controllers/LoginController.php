@@ -26,15 +26,15 @@ class LoginController extends Controller
     {
         $credentials = $loginRequest->validated();
 
-        if (auth()->attempt($credentials)) {
-            session()->regenerate();
-//            auth success, redirect to homepage
-            return redirect(RouteServiceProvider::HOME)->with('success', 'Welcome Back!');
+        if (!auth()->attempt($credentials)) {
+//        auth failed.
+            throw ValidationException::withMessages(
+                ['email' => "Your provided credentials couldn't be verified"]
+            );
         }
 
-//        auth failed.
-        throw ValidationException::withMessages(
-            ['email' => "Your provided credentials couldn't be verified"]
-        );
+//            auth success, redirect to homepage
+        session()->regenerate();
+        return redirect(RouteServiceProvider::HOME)->with('success', 'Welcome Back!');
     }
 }
