@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Contracts\Foundation\Application;
@@ -27,13 +27,13 @@ class LoginController extends Controller
         $credentials = $loginRequest->validated();
 
         if (!auth()->attempt($credentials)) {
-//        auth failed.
+//        Auth failed.
             throw ValidationException::withMessages(
                 ['email' => "Your provided credentials couldn't be verified"]
             );
         }
 
-//            auth success, redirect to homepage
+//            Auth success, redirect to homepage
         session()->regenerate();
         return redirect(RouteServiceProvider::HOME)->with('success', 'Welcome Back!');
     }

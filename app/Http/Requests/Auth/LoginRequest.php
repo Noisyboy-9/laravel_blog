@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +23,8 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['email' => "string", 'password' => "string"])] public function rules(): array
+    #[ArrayShape(['email' => "string", 'password' => "string"])]
+    public function rules(): array
     {
         return [
             'email' => 'required|email',
