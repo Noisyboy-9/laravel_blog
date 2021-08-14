@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $category = Category::factory()->create();
 
         Post::factory()
-            ->count(100)
-            ->create(['category_id' => $category, 'owner_id' => 1]);
+            ->count(10)
+            ->hasComments(5)
+            ->create(['category_id' => $category]);
     }
 }

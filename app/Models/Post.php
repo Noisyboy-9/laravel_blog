@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @method static truncate()
@@ -14,7 +15,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $with = ['category', 'owner'];
+    protected $with = ['category', 'owner', 'comments'];
 
     protected $fillable = ['title', 'body', 'description', 'slug', 'category_id'];
 
@@ -26,6 +27,11 @@ class Post extends Model
     public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function getRouteKeyName(): string
