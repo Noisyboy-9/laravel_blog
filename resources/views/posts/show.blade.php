@@ -73,8 +73,13 @@
                             <textarea name="body"
                                       id="body"
                                       rows="5"
-                                      class="w-full text-sm focus:outline-none focus:ring"
-                                      placeholder="Quick, thing of something to say"></textarea>
+                                      class="w-full py-4 px-6 text-sm focus:outline-none focus:ring border border-gray-100"
+                                      placeholder="Quick, thing of something to say"
+                                      required>{{ old('body') }}</textarea>
+
+                            @error('body')
+                            <p class="text-xs text-red-500"> {{ $message }}</p>
+                            @enderror
                         </div>
 
                         <footer class="flex justify-end mt-6 border-t border-gray-200 pt-6">
