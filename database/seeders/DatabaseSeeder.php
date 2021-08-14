@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
 
         Post::factory()
             ->count(100)
-            ->create(['category_id' => $category]);
+            ->create(['category_id' => $category, 'owner_id' => 1]);
     }
 }

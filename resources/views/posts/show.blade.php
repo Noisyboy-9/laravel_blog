@@ -3,6 +3,7 @@
 
     <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
         <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
+            {{--post author information--}}
             <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
                 <img src="/images/illustration-1.png" alt="" class="rounded-xl">
 
@@ -16,6 +17,7 @@
                 </div>
             </div>
 
+            {{--main content--}}
             <div class="col-span-8">
                 <div class="hidden lg:flex justify-between mb-6">
                     <a href="/posts"
@@ -46,7 +48,17 @@
                     <p> {{ $post->body }}</p>
                 </div>
             </div>
+
+            {{--comments--}}
+            <section class="col-start-5 col-span-8 mt-10 space-y-6">
+                <x-post-comment/>
+                <x-post-comment/>
+                <x-post-comment/>
+                <x-post-comment/>
+                <x-post-comment/>
+            </section>
         </article>
+
     </main>
 </x-layout>
 
