@@ -8,6 +8,7 @@ class NewsLetterService
 {
     private string $listId;
     private ApiClient $client;
+    private string $meting;
 
     public function __construct()
     {
