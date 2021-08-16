@@ -28,8 +28,4 @@ class NewsLetterService
             'status' => 'subscribed'
         ]);
     }
-
-    public function unsubscribe()
-    {
-    }
 }

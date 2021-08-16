@@ -6,8 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\DB;
-use function Symfony\Component\Translation\t;
+use JetBrains\PhpStorm\ArrayShape;
 
 class PostFactory extends Factory
 {
@@ -23,7 +22,8 @@ class PostFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    #[ArrayShape(['owner_id' => "\Illuminate\Database\Eloquent\Factories\Factory", 'category_id' => "\Illuminate\Database\Eloquent\Factories\Factory", 'slug' => "string", 'title' => "string", 'description' => "string", 'published_at' => "\Illuminate\Support\Carbon", 'body' => "string"])]
+    public function definition(): array
     {
         return [
             'owner_id' => User::factory(),

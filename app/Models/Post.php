@@ -17,7 +17,7 @@ class Post extends Model
 
     protected $with = ['category', 'owner', 'comments'];
 
-    protected $fillable = ['title', 'body', 'description', 'slug', 'category_id'];
+    protected $fillable = ['title', 'body', 'description', 'slug', 'category_id', 'thumbnail_path'];
 
     public function category(): BelongsTo
     {

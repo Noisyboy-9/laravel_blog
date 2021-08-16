@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return 'username';
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->email === 'sina.shariati@yahoo.com';
+    }
 }

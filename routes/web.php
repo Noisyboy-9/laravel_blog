@@ -18,6 +18,9 @@ Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post}', [PostController::class, 'show']);
 Route::post('/posts/{post}/comments', [PostCommentsController::class, 'store'])->middleware('Auth');
 
+Route::get('/admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+Route::post('/admin/posts', [PostController::class, 'store'])->middleware('admin');
+
 //register
 Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
@@ -30,3 +33,5 @@ Route::post('/logout', [LogoutController::class, 'destroy'])->middleware('Auth')
 
 //newsletter
 Route::post('newsletter', [NewsLetterController::class, 'store']);
+
+
