@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Services\NewsLetterService;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,8 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::if('admin', function () {
-            return auth()->user()?->isAdmin();
-        });
+        //
     }
 }

@@ -6,14 +6,8 @@
     </div>
 
     <div class="mt-8 md:mt-0 flex - items-center">
-        @admin
-        <a href="/admin/posts/create"
-           class="text-xs font-bold uppercase mr-3">
-            New Post
-        </a>
-        @endadmin
 
-        @guest
+        @guest()
             <a href="/login" class="text-xs font-bold uppercase mr-3">Login</a>
 
             <a href="/register"
@@ -36,7 +30,6 @@
                 {{ auth()->user()->name }}
             </a>
         @endauth
-
     </div>
 </nav>
 

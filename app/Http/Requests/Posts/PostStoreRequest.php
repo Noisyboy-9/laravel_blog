@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Posts;
 
 use Illuminate\Foundation\Http\FormRequest;
-use JetBrains\PhpStorm\ArrayShape;
 
 class PostStoreRequest extends FormRequest
 {
@@ -22,7 +21,6 @@ class PostStoreRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['title' => "string", 'description' => "string", 'body' => "string", 'thumbnail' => "string", 'slug' => "string", 'category_id' => "string"])]
     public function rules(): array
     {
         return [
