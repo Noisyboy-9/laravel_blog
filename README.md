@@ -26,11 +26,11 @@ The features implemented in this project are :
 Homepage:
 ![Homepage](/screen_shots/homepage.png)
 
-register:
+Register:
 ![register page](/screen_shots/register.png)
 
 All posts:
 ![all posts](/screen_shots/all_posts.png)
 
-single post:
+Single Post:
 ![single post view](/screen_shots/single_post.png)
