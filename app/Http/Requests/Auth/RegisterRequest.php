@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 use JetBrains\PhpStorm\ArrayShape;
 
 class RegisterRequest extends FormRequest
@@ -29,7 +30,9 @@ class RegisterRequest extends FormRequest
             'name' => 'required|max:255',
             'username' => 'required|min:3|max:255|unique:users,username|alpha_dash',
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|min:7|max:255'
+            'password' => [
+                Password::defaults()
+            ]
         ];
     }
 }

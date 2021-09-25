@@ -4,7 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use JetBrains\PhpStorm\ArrayShape;
+use Illuminate\Validation\Rules\Password;
 
 class LoginRequest extends FormRequest
 {
@@ -23,12 +23,11 @@ class LoginRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['email' => "string", 'password' => "string"])]
     public function rules(): array
     {
         return [
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => Password::required()
         ];
     }
 }
